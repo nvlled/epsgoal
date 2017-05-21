@@ -121,7 +121,7 @@ function createPlayer() {
 }
 
 function create() {
-    game.time.desiredFPS = 50;
+    game.time.desiredFPS = 40;
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.world.setBounds(0, 0, 2000, 2000);

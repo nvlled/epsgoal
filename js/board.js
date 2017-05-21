@@ -5,7 +5,7 @@ function createBoard(
         { cellsize=90, cellspc=10, 
           bgname="sky", cellname="cell",
           boardX=0, boardY=0,
-          cellbgtint=0x00fe00,
+          cellbgtint=0xffaaaa,
           celltint=0xff9999,
           cellalpha=1,
           hasEdges=true,

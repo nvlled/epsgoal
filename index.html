@@ -5,14 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>...</title>
 	<script type="text/javascript" src="js/phaser.min.js"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
-    </style>
+        <style type="text/css">
+            body {
+                margin: 0;
+            }
+            .no-es6-msg {
+                display: none;
+                text-align: center;
+            }
+        </style>
 </head>
 <body>
-
+    <h1 class="no-es6-msg">
+        To play, you need a more recent version of a web browser 
+        that supports javascript 2015 or ES6.
+    </h1>
+<script>
+    try {
+        let m = {
+            f() { 
+                let x = 10; 
+                let y = 20;
+                return { x, y }
+            },
+            g: (...args) => { },
+        }
+        let {x, y} = m.f();
+    } catch(e) {
+        console.log(e);
+        document.querySelector(".no-es6-msg").style.display = "inherit";
+    }
+</script>
 <script src="js/util.js" type="text/javascript"></script>
 <script src="js/inperative.js" type="text/javascript"></script>
 <script src="js/algebra.js" type="text/javascript"></script>

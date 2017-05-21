@@ -104,7 +104,7 @@ function preload() {
 let updates = [];
 
 function createPlayer() {
-    playerStart = {x: 10, y: game.world.height - 300}
+    playerStart = {x: game.camera.width/2, y: game.world.height - game.camera.height/2};
     let player = game.add.sprite(playerStart.x, playerStart.y, "player");
     game.physics.arcade.enable(player);
 
@@ -182,15 +182,15 @@ function create() {
     let menus = [
         {
             text: "Pair match game",
-            x: 500,
-            y: game.world.height - 200,
+            x: 50,
+            y: game.world.height - 50,
             board: pairMatchBoard,
         },
 
         {
             text: "Drop game",
-            x: 500,
-            y: game.world.height - 300,
+            x: 50,
+            y: game.world.height - 100,
             board: dropoutBoard,
         }
     ];
@@ -212,7 +212,7 @@ function create() {
                         x=> tweener(player, {alpha: 0}, 500),
                         x=> {
                             controlPlayer = false;
-                            quitBtn.body.velocity.set(0, 0);
+                            //quitBtn.body.velocity.set(0, 0);
                             game.camera.flash("red", 100, 0.5);
                             let board = menu.board;
                             player.y = board.getY() - 300;
@@ -229,7 +229,7 @@ function create() {
                                     board.getX()-board.width/4, 
                                     board.getY()-board.height/2,
                             );
-                            self.body.velocity.set(0, 0);
+                            //self.body.velocity.set(0, 0);
                             quitBtn.show();
                             self.position.set(menu.x, menu.y);
                             if (menu.board.start)

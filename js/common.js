@@ -114,26 +114,27 @@ function createButton(x, y, text,
         onUp();
     });
 
-    game.physics.arcade.enable(btnGroup);
+    //game.physics.arcade.enable(btnGroup);
     //btnGroup.body.immovable = true;
 
     let update = btnGroup.update;
     let lastContact = 0;
-    btnGroup.update = (...args) => {
-        update(...args);
+    //btnGroup.update = (...args) => {
+    //    update(...args);
 
-        let contact = game.physics.arcade.collide(player, btnGroup);
-        //console.log(">", game.time.elapsedSince(lastContact));
+    //    let contact = game.physics.arcade.collide(player, btnGroup);
+    //    //console.log(">", game.time.elapsedSince(lastContact));
 
-        if (!contact && inContact) {
-            onUp();
-        } else if (inContact && game.time.elapsedSince(lastContact) > 3000) {
-            onDown();
-            lastContact = +new Date;
-        }
+    //    if (!contact && inContact) {
+    //        onUp();
+    //    } else if (inContact && game.time.elapsedSince(lastContact) > 3000) {
+    //        onDown();
+    //        lastContact = +new Date;
+    //    }
 
-        inContact = contact;
-    }
+    //    inContact = contact;
+    //}
+
     btnGroup.show = () => {
         btnGroup.renderable = true;
         btnGroup.exists = true;

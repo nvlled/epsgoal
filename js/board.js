@@ -181,8 +181,14 @@ function createBoard(
             cellItems.removeAll(true);
         },
 
-        start() { },
-        stop() { },
+        start() {
+            board.setAllChildren('renderable', true);
+            board.setAllChildren('exists', true);
+        },
+        stop() {
+            board.setAllChildren('renderable', false);
+            board.setAllChildren('exists', false);
+        },
 
         width: boardWidth,
         height: boardHeight,

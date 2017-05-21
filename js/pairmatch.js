@@ -30,6 +30,11 @@ function createPairMatch(x, y, table) {
     board.table = table;
     board.elemSprites = elemSprites;
 
+    let mappingTable =createAlgebraTable(
+        board.getX()+board.width,
+        board.getY(), 
+        board.table, board.elemSprites);
+
     //-----------------------------
     // random creation
 
@@ -180,12 +185,15 @@ function createPairMatch(x, y, table) {
             }
         }
         board.exists = true;
+        mappingTable.start();
     }
 
     board.stop = () => {
         board.clear();
         board.exists = false;
+        mappingTable.stop();
     }
+    board.stop();
 
     return board;
 }

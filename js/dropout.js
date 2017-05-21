@@ -34,6 +34,13 @@ function createDropout(startX, startY, table=[]) {
     board.setBoardPosition(startX, startY);
     board.table = table;
     board.elemSprites = elemSprites;
+
+    let mappingTable = createAlgebraTable(
+        board.getX()+board.width,
+        board.getY(), 
+        board.table, board.elemSprites);
+
+
     board.onCellDragStart = (i, j) => {
         console.log(i, j, board.get(i, j)!=null);
     }
@@ -113,7 +120,7 @@ function createDropout(startX, startY, table=[]) {
     let savedAction;
     let dropping = false;
     let isMoving = false;
-    let currentShapeGroup;
+    let currentShapeGroup = [];
 
     let perform = (action, push=false) => {
         if (isMoving) {
@@ -355,6 +362,8 @@ function createDropout(startX, startY, table=[]) {
     };
 
     board.start = (state) => {
+        mappingTable.start();
+
         board.exists = true;
         playing = true;
         savedAction = null;
@@ -364,12 +373,15 @@ function createDropout(startX, startY, table=[]) {
         initializeLevel();
     }
     board.stop = (state) => {
+        mappingTable.stop();
+
         playing = false;
         currentShapeGroup.forEach(s => s.destroy());
         currentShapeGroup = [];
         board.clear();
         board.exists = false;
     }
+    board.stop();
 
     return board;
 }
